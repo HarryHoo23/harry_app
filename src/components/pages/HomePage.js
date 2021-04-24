@@ -10,6 +10,7 @@ export default function HomePage() {
                 <Col className="md-12">
                     <div style={{maxWidth:"600px", margin: "auto"}}>
                         <h2 className="home-title">Welcome to my</h2>
+                        <p>Hello, it's a test.</p>
                         <br/>                        
                         <Image className="responsive-img" src ={img} alt="img" />
                     </div>                    
