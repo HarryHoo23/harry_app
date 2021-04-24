@@ -1,13 +1,250 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+body, html {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Open Sans', 'sans-serif';
+  font-size: 15px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to left,#00639B, #00ABE7);
+}
+
+.navbar {
+  width: 100%;
+  height: 100%;
+  padding: 0 1rem;
+}
+
+.logout-box {
+  margin-left: auto;
+
+}
+
+.menu-logo {
+  margin-right: 50px;
+}
+
+.menu-logo > img {
+  max-width: 50px;
+  height: auto;
+}
+
+.menu-item {
+  color: #e0e0e0;
+}
+
+
+input[type="file"] {
+  display: none;
+}
+
+.input-btn {
+  border-radius: 50%;
+  border: 1px solid #e0e0e0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s all linear;
+}
+
+.input-btn:hover {
+  background-color: #00639B;
+}
+
+.input-btn:hover i{
+  color: #fff;
+}
+
+.card-decking {
+  grid-gap: 10px 30px;
+  display: grid;
+  margin: 20px auto;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.responsive-img {
+  width: 100%;
+  height: auto;
+}
+
+.info-card {
+  margin-bottom: 50px;
+}
+
+.logoutBtn {
+  color: #fff;
+  padding: 0.5rem 2rem;
+  margin-left: 1.5rem;
+}
+
+.login-info-box {
+  display: flex;
+  align-items: center;
+  color: #e0e0e0;
+}
+
+.home-title {
+  text-align: center;
+}
+
+.board-container {
+  display: flex;
+}
+
+.cardboard-left {
+  flex-basis: calc(80%);
+  padding-left: 5rem;
+}
+
+.fixed-right {
+  flex-basis: calc(20%);
+  text-align: center;
+  margin-left: 2rem;
+  height: 60vh;
+  border: 1px solid #f1f1f1;
+  position: sticky;
+  top: 30px;
+  padding: 30px 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+}
+
+.fixed-right h2 {
+  font-size: 20px;
+}
+
+.add-box {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  border-top: 1px solid #eeeeee;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ================= Quiz css ================= */
+.quiz-page {
+  background-color: #e0e0e0;
+  padding-bottom: 3rem;
+}
+
+.quiz-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 0.25rem;
+  box-shadow:  rgba(0, 0, 0, 0.1) 0px 3px 8px;
+  transform: perspective(1000px)  rotateY(var(--rotate-y, 0)) 
+  translateY(var(--translate-y, 0));
+  transform-style: preserve-3d;
+  transition: 150ms;
+  cursor: pointer;
+}
+
+.quiz-card:hover {
+  --translate-y: -2px;
+  box-shadow:  rgba(0, 0, 0, 0.5) 0px 3px 8px;
+}
+
+.quiz-card.flip {
+  --rotate-y: 180deg;
+}
+
+.quiz-card .front,
+.quiz-card .back {
+  position: absolute;
+  padding: 1rem;
+  backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.quiz-card .front {
+  left: 0;
+  padding: 3rem 1rem 1rem 1rem;
+  width: 100%;
+}
+
+.question-text {
+  font-weight: 600;
+}
+
+.difficulty-level {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  font-size: 0.7rem;
+}
+
+.quiz-card.flip .difficulty-level {
+  visibility: hidden;
+}
+
+.quiz-card .back {
+  transform: rotateY(180deg);
+}
+
+.flashcard-options {
+  margin-top: .5rem;
+}
+
+.flashcard-option {
+  margin-top: 0.25rem;
+  color: #555;
+  font-size: 0.75rem;
+}
+
+.flashcard-option:first-child {
+  margin-top: 0;
+}
+
+.card-grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.select-header {
+  
+  box-shadow:  rgba(0, 0, 0, 0.1) 0px 3px 8px;
+  padding: 0 1.5rem;
+  background-color: #fff;
+}
+
+.selec-header-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+}
+
+.form-group > label {
+  color: #777;
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;;
 }
