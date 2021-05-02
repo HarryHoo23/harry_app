@@ -9,6 +9,7 @@ import Header from './header & footer/Header';
 import HomePage from './pages/HomePage';
 import SecondPage from './pages/SecondPage';
 import ThirdPage from './pages/ThirdPage';
+import 'react-toastify/dist/ReactToastify.css';
 // import Footer from './header & footer/Footer';
 
 class App extends Component {

@@ -6,25 +6,22 @@ const UseFireStore = (collection) => {
     const [docs, setDocs] = useState([]);
     const user = useAuth();
 
-    useEffect(() => {
-        const unsub = projectFireStore.collection(collection).doc(`${user.currentUser.uid}`).get()
+    useEffect(() => {                    
+            const unsub = projectFireStore.collection(collection).doc(`${user.currentUser.uid}`).collection('card')
+            .orderBy('createdAt', 'desc')
             .onSnapshot((snap) => {
                 let documents = [];
                 snap.forEach(doc => {
-                    documents.push({...doc.data(), id: doc.id})
+                    documents.push({
+                        ...doc.data(),                                                
+                        id: doc.id
+                    })
                 });
                 setDocs(documents);
             });
 
-        return () => unsub();
-    }, [collection])
-    
-    // useEffect(() => {
-    //     projectFireStore.collection('card').doc(`${user.currentUser.uid}`).get().then((doc) => {
-    //         console.log(doc.data());
-    //     })
-
-    // }, [collection])
+            return () => unsub();       
+    }, [])
 
     return {docs};
 }
