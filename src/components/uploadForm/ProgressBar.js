@@ -1,16 +1,16 @@
 import React, {useEffect} from 'react'
 import UseStorage from '../../hooks/UseStorage';
 
-const ProgressBar = ({file, setFile}) => {
-    const { url, progress } = UseStorage(file);
-    console.log(progress, url);
-    
-    useEffect(() => {        
-        url ? setFile(null) : setFile(file);     
-    }, [url, file, setFile])
+const ProgressBar = ({file, setFile, form }) => {
+    const { url, progress } = UseStorage(file, form);    
+    useEffect(() => {     
+        if(url) {
+           setFile(null) 
+        } 
+    }, [url, setFile])
 
     return (
-        <div className="progress-bar mb-5" style={{ width: progress + "%" }}>{progress + "%"}</div>
+        <div className="progress-bar mb-3" style={{ width: progress + "%" }}>{progress + "%"}</div>
     )
 }
 

@@ -38,13 +38,13 @@ const UploadForm = () => {
     const [submitFile, setSubmitFile] = useState(null);
     const [error, setError] = useState(null);
     const types = ['image/png', ' image/jpeg', 'image/jpg'];
+    const [formsFields, setFormsFields] = useState({title: "", content: ""});
+    const {title, content} = formsFields;
 
     const changeHandler = (e) => {
         let selected = e.target.files[0];
         if(selected && types.includes(selected.type)) {
-            setFile(selected);
-            console.log(selected);
-            
+            setFile(selected);                        
             setError("");
         } else {
             setFile(null);
@@ -54,10 +54,8 @@ const UploadForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (file) {
-            setSubmitFile(file);
-            console.log(submitFile);
-            
+        if (file && title && content) {
+            setSubmitFile(file);         
             setError("");
         } else {
             setSubmitFile(null);
@@ -65,8 +63,12 @@ const UploadForm = () => {
         }
     }
 
+    const updateFieldChanged = e => {
+        setFormsFields({ ...formsFields, [e.target.name]: e.target.value });
+    } 
+
     return (
-        <Form className="mt-5" onSubmit={handleSubmit}>
+        <Form className="mt-5 cardSubmitForm" onSubmit={handleSubmit}>
             <label>
                 <input type = "file" onChange={changeHandler}/>
                 <p className="input-btn"><i className="fas fa-plus"></i></p>
@@ -74,9 +76,17 @@ const UploadForm = () => {
             <div className="output">
                 { error && <div className="error">{error}</div>}
                 { file && <div>{ file.name }</div>}
-                { file && <ProgressBar file={submitFile} setFile={setSubmitFile} />}
+                { file && <ProgressBar file={submitFile} setFile={setFile} form={formsFields} />}
             </div>
-            <Button className="btn btn-primary" type="submit">Submit</Button>
+            <Form.Group id="cardTitleControl">
+                <Form.Label>Card Title</Form.Label>
+                <Form.Control type="text" name="title" value={title} onChange={e => updateFieldChanged(e)}  required />
+            </Form.Group>
+            <Form.Group id="cardContentControl" className="pb-3">
+                <Form.Label>Please put your content here</Form.Label>
+                <Form.Control as="textarea" name="content" value={content} type="text" rows={3} onChange={e => updateFieldChanged(e)} />
+            </Form.Group>            
+            <Button className="btn btn-primary" type="submit">Submit</Button>        
         </Form>
     )
   

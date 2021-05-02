@@ -1,26 +1,31 @@
 import React from 'react';
 import UseFirestore from '../hooks/UseFireStore';
 import Card from '../components/card/NewCard';
-import { auth } from '../firebase/firebase';
 
 const ImageGrid = () => {
-    
-    const user = auth.currentUser.uid;
-    const { docs } = UseFirestore('card/');
+    const { docs } = UseFirestore(`cards/`);
+    const monthsOfYear = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];    
 
-    console.log(docs);
-
+       
     return(        
-        <>
-            { docs && docs.map(doc => (            
-                <Card key={doc.id} img={doc.url} title="random card" content="no content" />
-            )) }
+        <>  
+            { docs && docs.map(doc => {            
+                    var dataSeconds = doc.createdAt.seconds;
+                    const time = new Date(dataSeconds * 1000);
+                    var month = time.getMonth();
+                    var day = time.getDate();
+                    var hour = time.getHours();
+                    var minute = time.getMinutes();                               
+                    let formattedTime = `${hour} : ${minute}`;                    
+                    
+                    return <Card key={doc.id} id={doc.id} img={doc.image} time={formattedTime} 
+                            title={doc.content.title} content={doc.content.body} 
+                        month = {monthsOfYear[month]} date={day}
+                             />                       
+                })
+            }
         </>
     )
 }
-
 export default ImageGrid;
-
-/* <div className="img-wrap" key={doc.id}>
-    <img src={doc.url} alt="firebase pic" />
-</div> */
+  

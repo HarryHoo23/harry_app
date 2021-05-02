@@ -53,16 +53,7 @@ class SecondPage extends Component {
         return (
             <Container fluid className="mt-5 board-container">
                 <div className="cardboard-left">
-                    <CardColumns>                                        
-                        {this.state.fireabseCard.map(card => {
-                            return (
-                                <Card key={card.id} 
-                                img={trainImg} 
-                                title={card.title} 
-                                content={card.content} />
-                            )
-                        })} 
-                        {this.state.card}
+                    <CardColumns>                                                                                        
                         <ImageGrid />
                     </CardColumns>                
                 </div>
