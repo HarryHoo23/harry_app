@@ -12,8 +12,8 @@ class NewCard extends Component {
                     <Card.Img variant="top" src={this.props.img} />
                     <Card.Body>
                         <Card.Title>{this.props.title}</Card.Title>
-                        <Card.Subtitle>{this.props.time}</Card.Subtitle>
                         <Card.Text>{this.props.content}</Card.Text>
+                        <Card.Subtitle className="created-time">{this.props.time}</Card.Subtitle>
                     </Card.Body>           
                     <DeleteStoreButton id={this.props.id} />             
                 </Card>                               
