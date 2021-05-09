@@ -37,11 +37,8 @@ const UseStorage = (file, form) => {
         } else {
             console.log('error');
         }
-
         
     }, [file, currentUser])
- 
-    console.log(time);
 
     return {
         progress,

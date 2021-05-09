@@ -4,10 +4,8 @@ import FlashCardList from '../quiz/FlashcardList';
 import axios from '../../axios/axios';
 
 function ThirdPage() {
-    const [flashcards,
-        setFlashcards] = useState([]);
-    const [categories,
-        setCategories] = useState([]);
+    const [flashcards, setFlashcards] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     const categoryEl = useRef();
     const amountEl = useRef();

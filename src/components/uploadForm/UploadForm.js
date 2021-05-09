@@ -32,7 +32,7 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import ProgressBar from './ProgressBar';
 
-const UploadForm = () => {
+const UploadForm = (props) => {
     
     const [file, setFile] = useState(null);
     const [submitFile, setSubmitFile] = useState(null);
@@ -55,7 +55,8 @@ const UploadForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (file && title && content) {
-            setSubmitFile(file);         
+            setSubmitFile(file);  
+            props.getFileData(file);       
             setError("");
         } else {
             setSubmitFile(null);

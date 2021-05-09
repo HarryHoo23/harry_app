@@ -163,6 +163,17 @@ input[type="file"] {
   justify-content: center;
 }
 
+.delete-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.created-time {
+  color: #e0e0e0;
+  font-size: 12px;
+}
+
 
 /* ================= Quiz css ================= */
 .quiz-page {
